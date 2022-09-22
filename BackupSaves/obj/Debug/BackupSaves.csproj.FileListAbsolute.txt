@@ -1,0 +1,7 @@
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\bin\Debug\BackupSaves.exe.config
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\bin\Debug\BackupSaves.exe
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\bin\Debug\BackupSaves.pdb
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\obj\Debug\BackupSaves.csproj.AssemblyReference.cache
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\obj\Debug\BackupSaves.csproj.CoreCompileInputs.cache
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\obj\Debug\BackupSaves.exe
+C:\Users\neptu\source\repos\BackupSaves\BackupSaves\obj\Debug\BackupSaves.pdb
