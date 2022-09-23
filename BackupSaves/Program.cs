@@ -15,6 +15,7 @@ namespace BackupSaves
         {
             Console.WriteLine("Loading saves!");
 
+            string configFolder = @"\Config";
             string saveFolder = @"\BackupSaves";
             string subDir = @"\Documents";
             string username = System.Environment.GetEnvironmentVariable("USERPROFILE");
@@ -42,17 +43,43 @@ namespace BackupSaves
                     Console.Clear();
                     Console.WriteLine("What game do you want to create a save on?");
                     string gameName = Console.ReadLine();
+
+                    string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+                    Directory.CreateDirectory(currentDir + configFolder);
                     Directory.CreateDirectory(finishedDir+@"\"+gameName);
+                    File.Create(currentDir + configFolder + @"\" + gameName + ".cfg");
                     Console.WriteLine("Where is " + gameName + "'s saves at?");
 
                     var dlg = new FolderBrowserDialog();
 
                     var result = dlg.ShowDialog();
                     Console.WriteLine(dlg.SelectedPath);
+                    Directory.CreateDirectory(finishedDir + @"\" + gameName + @"\" + gameName + " Saves");
+                    CloneDirectory(dlg.SelectedPath, finishedDir + @"\" + gameName + @"\" + gameName + " Saves");
+                    Console.WriteLine("Created backup save for " + gameName);
                 }
             }
 
             Console.ReadLine();
+            Main();
+        }
+
+        private static void CloneDirectory(string root, string dest)
+        {
+            foreach (var directory in Directory.GetDirectories(root))
+            {
+                string dirName = Path.GetFileName(directory);
+                if (!Directory.Exists(Path.Combine(dest, dirName)))
+                {
+                    Directory.CreateDirectory(Path.Combine(dest, dirName));
+                }
+                CloneDirectory(directory, Path.Combine(dest, dirName));
+            }
+
+            foreach (var file in Directory.GetFiles(root))
+            {
+                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
+            }
         }
     }
 }
